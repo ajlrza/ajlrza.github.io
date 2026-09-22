@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anjelo Jann Laroza — Systems &amp; Infrastructure</title>
+<title>Anjelo Jann Laroza - Systems &amp; Infrastructure</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -55,22 +55,30 @@
     top: 0;
     align-self: flex-start;
     height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
   }
+  .sidebar::-webkit-scrollbar{ width: 6px; }
+  .sidebar::-webkit-scrollbar-thumb{ background: var(--border); }
+  .sidebar::-webkit-scrollbar-track{ background: transparent; }
 
   .sidebar h1{
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     font-weight: 600;
-    margin: 0 0 4px;
+    line-height: 1.3;
+    word-break: break-word;
+    margin: 0 0 8px;
   }
 
   .cursor{
     display: inline-block;
     width: 9px;
-    height: 1.1em;
+    height: 1em;
     background: var(--amber);
     margin-left: 2px;
-    vertical-align: -2px;
+    vertical-align: -1px;
     animation: blink 1.1s steps(1) infinite;
   }
   @media (prefers-reduced-motion: reduce){ .cursor{ animation: none; opacity: 1; } }
@@ -80,7 +88,7 @@
     color: var(--muted);
     font-size: 0.9rem;
     margin: 0 0 28px;
-    max-width: 22ch;
+    max-width: 24ch;
   }
 
   .sidebar nav{ display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
@@ -140,6 +148,8 @@
   }
 
   .project-head h3{ font-size: 1.05rem; margin: 0; font-weight: 600; }
+  .project-head h3 a{ text-decoration-color: var(--border); }
+  .project-head h3 a:hover{ text-decoration-color: var(--amber); }
 
   .status{
     font-family: 'IBM Plex Mono', monospace;
@@ -183,10 +193,25 @@
   }
 
   #contact p{ color: var(--muted); margin: 0 0 18px; }
-  .contact-links{ display: flex; flex-direction: column; gap: 10px; }
+  .contact-links{ display: flex; flex-direction: column; gap: 14px; }
   .contact-links a{
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--muted);
+  }
+  .contact-links a:hover{ color: var(--text); }
+  .contact-links a:hover svg{ stroke: var(--amber); }
+  .contact-links svg{
+    width: 18px;
+    height: 18px;
+    stroke: var(--muted);
+    fill: none;
+    stroke-width: 1.6;
+    flex: 0 0 18px;
+    transition: stroke 0.15s ease;
   }
 
   footer{
@@ -198,11 +223,13 @@
     border-top: 1px solid var(--border);
   }
 
+  /* Mobile */
   @media (max-width: 760px){
     .layout{ flex-direction: column; }
     .sidebar{
       position: static;
       height: auto;
+      overflow-y: visible;
       width: 100%;
       border-right: none;
       border-bottom: 1px solid var(--border);
@@ -219,7 +246,7 @@
 <div class="layout">
 
   <aside class="sidebar">
-    <h1>Jay<span class="cursor" aria-hidden="true"></span></h1>
+    <h1>Anjelo Jann Laroza<span class="cursor" aria-hidden="true"></span></h1>
     <p class="role">Backend &amp; distributed systems: building toward infra and ML systems engineering</p>
     <nav aria-label="Section navigation">
       <a href="#about">About</a>
@@ -229,7 +256,7 @@
     </nav>
     <div class="meta">
       <span>Philippines | Fully Remote</span>
-      <a href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener">github.com/ajlrza</a>
+      <a href="https://github.com/ajlrza" target="_blank" rel="noopener">github.com/ajlrza</a>
     </div>
   </aside>
 
@@ -237,8 +264,8 @@
 
     <section id="about">
       <h2>About</h2>
-      <p>I'm an IT sophomore (online BS in Information Technology, Mapúa University) working on distributed systems, backend architecture, and core infrastructure with a growing focus on <span class="highlight">ML systems & Applied AI</span>.</p>
-      <p>Most of my time goes into a rotation of systems projects: a database engine written from scratch in C++, and two distributed-systems platforms exploring stateful, real-time architectures around LLMs. I also co-authored a mechanistic interpretability paper, <em>FTB Graph</em>, with three collaborators.</p>
+      <p>I'm an IT sophomore (online BS in Information Technology, Mapúa University) working on distributed systems, backend architecture, and core infrastructure with a growing focus on <span class="highlight">ML systems &amp; Applied AI &amp; AI Architecture</span>.</p>
+      <p>Most of my time goes into a rotation of systems projects: a database engine written from scratch in C++, and two distributed-systems platforms exploring stateful, real-time architectures around LLMs. I also co-authored a mechanistic interpretability paper that is under review at AAAI27, <em>FTB Graph: Determining and Validating First-token Broadcasters and Language-Identity Head Circuits in Multilingual Language Models</em>, with three collaborators.</p>
       <p>Currently building toward backend SWE internships at large engineering orgs, with a longer-term move toward infrastructure and research-engineer roles.</p>
     </section>
 
@@ -247,17 +274,17 @@
 
       <div class="project">
         <div class="project-head">
-          <h3><a href="https://www.github.com/ajlrza/RailDB">RailDB</a></h3>
-          <span class="status"><span class="dot"></span>active</span>
+          <h3><a href="https://www.github.com/ajlrza/RailDB" target="_blank" rel="noopener">RailDB</a></h3>
+          <span class="status"><span class="dot"></span>ONGOING</span>
         </div>
-        <p>A hybrid NoSQL + SQL database engine built from scratch in C++, inspired by PostgreSQL & MongoDB.</p>
+        <p>A hybrid NoSQL + SQL database engine built from scratch in C++, inspired by PostgreSQL &amp; MongoDB.</p>
         <div class="stack"><span>C++</span></div>
       </div>
 
       <div class="project">
         <div class="project-head">
-          <h3><a href="https://www.github.com/ajlrza/SYNEURO">Syneuro</a></h3>
-          <span class="status"><span class="dot"></span>active</span>
+          <h3><a href="https://www.github.com/ajlrza/SYNEURO" target="_blank" rel="noopener">Syneuro</a></h3>
+          <span class="status"><span class="dot"></span>ONGOING</span>
         </div>
         <p>An LLM affective-computing engine that gives stateless LLMs biologically-inspired memory and emotions, perfect for AI companions.</p>
         <div class="stack"><span>Go</span><span>Python</span><span>TypeScript</span><span>FastAPI</span><span>Kafka</span></div>
@@ -265,19 +292,17 @@
 
       <div class="project">
         <div class="project-head">
-          <h3><a href="https://www.github.com/ajlrza/Immersia">Immersia</a></h3>
-          <span class="status"><span class="dot"></span>active</span>
+          <h3><a href="https://www.github.com/ajlrza/Immersia" target="_blank" rel="noopener">Immersia</a></h3>
+          <span class="status"><span class="dot"></span>ONGOING</span>
         </div>
-        <p>A web-native simulation engine combining generative AI narrative models with deterministic game logic to orchestrate a persistent, autonomous virtual world </p>
+        <p>A web-native simulation engine combining generative AI narrative models with deterministic game logic to orchestrate a persistent, autonomous virtual world.</p>
         <div class="stack"><span>TypeScript</span><span>Go</span><span>Python</span><span>LLM APIs</span><span>Kafka</span></div>
       </div>
     </section>
 
-    <section id="focus">
-      <h2>Focus</h2>
-      <ul>
-        <li><span class="label">roles</span><span>Software Engineer, Distributed Systems Engineer, ML Infra Engineer, Research Engineer</span></li>
-      </ul>
+    <section id="Roles">
+      <h2>Roles</h2>
+        <span>Software Engineer, Distributed Systems Engineer, ML Infra Engineer, Research Engineer</span>
     </section>
 
     <section id="contact">
